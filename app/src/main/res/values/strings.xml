@@ -1,3 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Application -->
     <string name="app_name">Smart Pantry Manager</string>
+
+    <!-- Dashboard header -->
+    <string name="welcome_title">Smart Pantry</string>
+    <string name="welcome_subtitle">Your kitchen, organised.</string>
+
+    <!-- Dashboard welcome banner -->
+    <string name="welcome_category">WELCOME TO YOUR PANTRY</string>
+    <string name="welcome_heading">What\'s in your kitchen?</string>
+    <string name="welcome_description">Keep track of ingredients and discover what you can cook.</string>
+
+    <!-- Pantry section -->
+    <string name="pantry_heading">Your Pantry</string>
+    <string name="pantry_description">Your saved ingredients will appear here.</string>
+    <string name="your_ingredients">Your ingredients</string>
+    <string name="btn_add_ingredient">Add Ingredient</string>
+
+    <!-- Recipe suggestions section -->
+    <string name="recipes_heading">Recipe Suggestions</string>
+    <string name="recipes_description">Find recipes you can make with ingredients you have.</string>
+    <string name="make_something_delicious">Make something delicious</string>
+
+    <!-- Dashboard footer -->
+    <string name="dashboard_footer">Smart Pantry · Plan, save and cook</string>
+
+    <!-- Add Ingredient screen -->
+    <string name="add_ingredient_title">Add Ingredient</string>
+    <string name="add_ingredient_subtitle">Keep track of what you have in your kitchen.</string>
+    <string name="ingredient_name_label">Ingredient name</string>
+    <string name="ingredient_name_hint">e.g. Tomato</string>
+    <string name="quantity_label">Quantity</string>
+    <string name="quantity_hint">e.g. 5</string>
+    <string name="unit_label">Unit</string>
+    <string name="expiry_date_label">Expiry date (optional)</string>
+    <string name="expiry_date_hint">YYYY-MM-DD</string>
+    <string name="save_ingredient">Save Ingredient</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- General feedback and validation -->
+    <string name="error_ingredient_name_required">Please enter an ingredient name.</string>
+    <string name="error_quantity_required">Please enter a quantity.</string>
+    <string name="error_quantity_invalid">Quantity must be greater than zero.</string>
+    <string name="error_unit_required">Please select a unit.</string>
+    <string name="error_expiry_date_invalid">Enter the expiry date as YYYY-MM-DD.</string>
+    <string name="ingredient_saved">Ingredient saved successfully.</string>
+    <string name="ingredient_save_failed">Could not save the ingredient. Please try again.</string>
+    <string name="no_recipes_match">No recipes match your pantry yet. Add more ingredients to discover recipes.</string>
+
+    <!-- Common actions -->
+    <string name="cancel_action">Cancel</string>
+    <string name="edit_action">Edit</string>
+    <string name="delete_action">Delete</string>
+    <string name="save_action">Save</string>
+    <string name="back_action">Back</string>
+
 </resources>

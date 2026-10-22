@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/screen_background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_ingredient_title"
+            android:textColor="@color/forest_green"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="28dp"
+            android:text="@string/add_ingredient_subtitle"
+            android:textColor="@color/text_secondary"
+            android:textSize="15sp" />
+
+        <!-- Ingredient name -->
+        <TextView
+            android:id="@+id/tvIngredientNameLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/etIngredientName"
+            android:text="@string/ingredient_name_label"
+            android:textColor="@color/forest_green"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etIngredientName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="20dp"
+            android:autofillHints="food"
+            android:inputType="textCapSentences"
+            android:minHeight="52dp"
+            android:padding="12dp"
+            android:singleLine="true" />
+
+        <!-- Quantity -->
+        <TextView
+            android:id="@+id/tvQuantityLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/etQuantity"
+            android:text="@string/quantity_label"
+            android:textColor="@color/forest_green"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="20dp"
+            android:inputType="numberDecimal"
+            android:minHeight="52dp"
+            android:padding="12dp"
+            android:singleLine="true"
+            android:importantForAutofill="no" />
+
+        <!-- Unit -->
+        <TextView
+            android:id="@+id/tvUnitLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/spinnerUnit"
+            android:text="@string/unit_label"
+            android:textColor="@color/forest_green"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spinnerUnit"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="20dp"
+            android:contentDescription="@string/unit_label" />
+
+        <!-- Expiry date -->
+        <TextView
+            android:id="@+id/tvExpiryDateLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/etExpiryDate"
+            android:text="@string/expiry_date_label"
+            android:textColor="@color/forest_green"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etExpiryDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="28dp"
+            android:inputType="date"
+            android:minHeight="52dp"
+            android:padding="12dp"
+            android:singleLine="true"
+            android:importantForAutofill="no" />
+
+        <!-- Save -->
+        <Button
+            android:id="@+id/btnSaveIngredient"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:backgroundTint="@color/teal_green"
+            android:text="@string/save_ingredient"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textAllCaps="false" />
+
+        <!-- Cancel -->
+        <Button
+            android:id="@+id/btnCancelIngredient"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/cancel"
+            android:textColor="@color/forest_green"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Main colours -->
+    <color name="teal_green">#218C74</color>
+    <color name="soft_peach">#FFE0CC</color>
+
+    <!-- Supporting colours -->
+    <color name="light_peach">#FFF4ED</color>
+    <color name="dark_teal">#176B5B</color>
+    <color name="forest_green">#203C2B</color>
+
+    <!-- Backgrounds and cards -->
+    <color name="screen_background">#FFF9F5</color>
+    <color name="card_background">#FFFFFFFF</color>
+    <color name="card_border">#F0CDBA</color>
+
+    <!-- Text colours -->
+    <color name="text_primary">#26332F</color>
+    <color name="text_secondary">#65736D</color>
+
+    <!-- Existing Android colours -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
