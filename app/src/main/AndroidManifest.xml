@@ -12,10 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartPantryManager">
 
+        <!-- Pantry list screen -->
+        <activity
+            android:name=".PantryListActivity"
+            android:exported="false" />
+
+        <!-- Add and edit ingredient screen -->
         <activity
             android:name=".AddIngredientActivity"
             android:exported="false" />
 
+        <!-- Suggested recipes screen -->
+        <activity
+            android:name=".SuggestedRecipesActivity"
+            android:exported="false" />
+
+        <!-- Main dashboard and launcher screen -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
