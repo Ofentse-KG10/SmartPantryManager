@@ -15,7 +15,7 @@ import java.util.Map;
 public class PantryDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "smart_pantry.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     public PantryDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -59,8 +59,10 @@ public class PantryDatabaseHelper extends SQLiteOpenHelper {
                 "setting_value TEXT NOT NULL)");
     }
 
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
         if (oldVersion < 2) {
             db.execSQL("CREATE TABLE IF NOT EXISTS recipes (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -77,25 +79,97 @@ public class PantryDatabaseHelper extends SQLiteOpenHelper {
 
             seedRecipes(db);
         }
+
+        if (oldVersion < 3) {
+            db.execSQL("CREATE TABLE IF NOT EXISTS settings (" +
+                    "setting_key TEXT PRIMARY KEY," +
+                    "setting_value TEXT NOT NULL)");
+        }
     }
+
 
     // PANTRY CRUD
 
+
     public long addIngredient(String name, double quantity,
                               String unit, String expiryDate) {
+
         if (name == null || name.trim().isEmpty()
                 || unit == null || unit.trim().isEmpty()
                 || !Double.isFinite(quantity) || quantity <= 0) {
             return -1;
         }
 
-        ContentValues values = new ContentValues();
-        values.put("name", name.trim());
-        values.put("quantity", quantity);
-        values.put("unit", unit.trim());
-        values.put("expiry_date", expiryDate);
+        SQLiteDatabase db = getWritableDatabase();
 
-        return getWritableDatabase().insert("ingredients", null, values);
+        String cleanName = name.trim();
+        String cleanUnit = unit.trim();
+
+        db.beginTransaction();
+
+        try {
+            try (Cursor cursor = db.query(
+                    "ingredients",
+                    new String[]{"id", "quantity", "expiry_date"},
+                    "name = ? COLLATE NOCASE AND unit = ? COLLATE NOCASE",
+                    new String[]{cleanName, cleanUnit},
+                    null,
+                    null,
+                    "id ASC")) {
+
+                if (cursor.moveToFirst()) {
+                    long id = cursor.getLong(0);
+                    double oldQuantity = cursor.getDouble(1);
+                    String oldExpiry = cursor.getString(2);
+
+                    ContentValues values = new ContentValues();
+                    values.put("quantity", oldQuantity + quantity);
+
+                    values.put(
+                            "expiry_date",
+                            expiryDate == null || expiryDate.trim().isEmpty()
+                                    ? oldExpiry
+                                    : expiryDate.trim()
+                    );
+
+                    int updated = db.update(
+                            "ingredients",
+                            values,
+                            "id = ?",
+                            new String[]{String.valueOf(id)}
+                    );
+
+                    if (updated > 0) {
+                        db.setTransactionSuccessful();
+                        return id;
+                    }
+
+                    return -1;
+                }
+            }
+
+            ContentValues values = new ContentValues();
+            values.put("name", cleanName);
+            values.put("quantity", quantity);
+            values.put("unit", cleanUnit);
+            values.put(
+                    "expiry_date",
+                    expiryDate == null || expiryDate.trim().isEmpty()
+                            ? null
+                            : expiryDate.trim()
+            );
+
+            long id = db.insert("ingredients", null, values);
+
+            if (id != -1) {
+                db.setTransactionSuccessful();
+            }
+
+            return id;
+
+        } finally {
+            db.endTransaction();
+        }
     }
 
     public Cursor getAllIngredients() {
@@ -405,6 +479,7 @@ public class PantryDatabaseHelper extends SQLiteOpenHelper {
         return s;
     }
 
+
     private String normalizeUnit(String value) {
         String s = value == null ? "" : value.trim().toLowerCase(Locale.ROOT);
 
@@ -426,4 +501,61 @@ public class PantryDatabaseHelper extends SQLiteOpenHelper {
                 return s;
         }
     }
+
+    public void mergeDuplicateIngredients() {
+        SQLiteDatabase db = getWritableDatabase();
+        db.beginTransaction();
+
+        try {
+            Cursor cursor = db.rawQuery(
+                    "SELECT MIN(id), " +
+                            "LOWER(TRIM(name)), " +
+                            "LOWER(TRIM(unit)), " +
+                            "SUM(quantity), " +
+                            "MAX(expiry_date) " +
+                            "FROM ingredients " +
+                            "GROUP BY LOWER(TRIM(name)), LOWER(TRIM(unit))",
+                    null
+            );
+
+            try {
+                while (cursor.moveToNext()) {
+                    long keepId = cursor.getLong(0);
+                    String name = cursor.getString(1);
+                    String unit = cursor.getString(2);
+                    double totalQuantity = cursor.getDouble(3);
+                    String expiryDate = cursor.getString(4);
+
+                    ContentValues values = new ContentValues();
+                    values.put("quantity", totalQuantity);
+                    values.put("expiry_date", expiryDate);
+
+                    db.update(
+                            "ingredients",
+                            values,
+                            "id = ?",
+                            new String[]{String.valueOf(keepId)}
+                    );
+
+                    db.delete(
+                            "ingredients",
+                            "LOWER(TRIM(name)) = ? AND " +
+                                    "LOWER(TRIM(unit)) = ? AND id != ?",
+                            new String[]{
+                                    name,
+                                    unit,
+                                    String.valueOf(keepId)
+                            }
+                    );
+                }
+            } finally {
+                cursor.close();
+            }
+
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+    }
 }
+
