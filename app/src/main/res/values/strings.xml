@@ -8,24 +8,48 @@
     <string name="welcome_title">Smart Pantry</string>
     <string name="welcome_subtitle">Your kitchen, organised.</string>
 
+    <!-- Dashboard icons -->
+    <string name="leaf_emoji">🌿</string>
+    <string name="leaf_logo_description">Leaf logo</string>
+    <string name="pantry_emoji">📦</string>
+    <string name="pantry_icon_description">Pantry box icon</string>
+    <string name="cooking_pot_emoji">🍲</string>
+    <string name="cooking_pot_description">Cooking pot icon</string>
+
     <!-- Dashboard welcome banner -->
     <string name="welcome_category">WELCOME TO YOUR PANTRY</string>
     <string name="welcome_heading">What\'s in your kitchen?</string>
     <string name="welcome_description">Keep track of ingredients and discover what you can cook.</string>
 
-    <!-- Pantry section -->
+    <!-- Dashboard pantry section -->
     <string name="pantry_heading">Your Pantry</string>
     <string name="pantry_description">Your saved ingredients will appear here.</string>
     <string name="your_ingredients">Your ingredients</string>
     <string name="btn_add_ingredient">Add Ingredient</string>
+    <string name="view_my_pantry">View My Pantry</string>
 
-    <!-- Recipe suggestions section -->
+    <!-- Dashboard pantry summary formatting -->
+    <string name="pantry_summary_format">%1$s\n\n%2$s</string>
+    <string name="pantry_more_items">And %1$d more...</string>
+
+    <!-- Dashboard recipe section -->
     <string name="recipes_heading">Recipe Suggestions</string>
     <string name="recipes_description">Find recipes you can make with ingredients you have.</string>
     <string name="make_something_delicious">Make something delicious</string>
 
     <!-- Dashboard footer -->
     <string name="dashboard_footer">Smart Pantry · Plan, save and cook</string>
+
+    <!-- Pantry List screen -->
+    <string name="pantry_list_title">My Pantry</string>
+    <string name="pantry_list_subtitle">Your saved ingredients</string>
+    <string name="pantry_empty_message">Your pantry is empty. Add an ingredient to get started.</string>
+
+    <!-- Pantry ingredient item -->
+    <string name="ingredient_quantity">Quantity: %1$s %2$s</string>
+    <string name="ingredient_expiry">Expiry date: %1$s</string>
+    <string name="ingredient_expiry_not_set">Expiry date not set</string>
+    <string name="ingredient_details_message">%1$s\n%2$s</string>
 
     <!-- Add Ingredient screen -->
     <string name="add_ingredient_title">Add Ingredient</string>
@@ -56,5 +80,6 @@
     <string name="delete_action">Delete</string>
     <string name="save_action">Save</string>
     <string name="back_action">Back</string>
+    <string name="ok_action">OK</string>
 
 </resources>

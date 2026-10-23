@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -33,9 +32,9 @@
                     android:layout_height="48dp"
                     android:background="@color/soft_peach"
                     android:gravity="center"
-                    android:text="🌿"
+                    android:text="@string/leaf_emoji"
                     android:textSize="26sp"
-                    android:contentDescription="Leaf logo" />
+                    android:contentDescription="@string/leaf_logo_description" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -58,7 +57,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
-                        android:text="Your kitchen, organised."
+                        android:text="@string/welcome_subtitle"
                         android:textColor="@color/text_secondary"
                         android:textSize="14sp" />
 
@@ -77,7 +76,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="WELCOME TO YOUR PANTRY"
+                    android:text="@string/welcome_category"
                     android:textColor="@color/dark_teal"
                     android:textSize="11sp"
                     android:textStyle="bold"
@@ -87,7 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="What's in your kitchen?"
+                    android:text="@string/welcome_heading"
                     android:textColor="@color/forest_green"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -96,7 +95,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
-                    android:text="Keep track of ingredients and discover what you can cook."
+                    android:text="@string/welcome_description"
                     android:textColor="@color/text_primary"
                     android:textSize="14sp"
                     android:lineSpacingExtra="3dp" />
@@ -126,9 +125,9 @@
                     android:layout_height="40dp"
                     android:background="@color/light_peach"
                     android:gravity="center"
-                    android:text="📦"
+                    android:text="@string/pantry_emoji"
                     android:textSize="21sp"
-                    android:contentDescription="Pantry box icon" />
+                    android:contentDescription="@string/pantry_icon_description" />
 
             </LinearLayout>
 
@@ -144,7 +143,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="🥕  Your ingredients"
+                    android:text="@string/your_ingredients"
                     android:textColor="@color/forest_green"
                     android:textSize="17sp"
                     android:textStyle="bold" />
@@ -174,6 +173,18 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <!-- View pantry button -->
+            <Button
+                android:id="@+id/btnViewPantry"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/forest_green"
+                android:text="@string/view_my_pantry"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
             <!-- Recipe section heading -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -197,25 +208,30 @@
                     android:layout_height="40dp"
                     android:background="@color/light_peach"
                     android:gravity="center"
-                    android:text="🍲"
+                    android:text="@string/cooking_pot_emoji"
                     android:textSize="21sp"
-                    android:contentDescription="Cooking pot icon" />
+                    android:contentDescription="@string/cooking_pot_description" />
 
             </LinearLayout>
 
-            <!-- Recipe suggestions card -->
+            <!-- Clickable Recipe Suggestions card -->
             <LinearLayout
+                android:id="@+id/recipeSuggestions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:background="@color/card_background"
                 android:orientation="vertical"
-                android:padding="18dp">
+                android:padding="18dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:contentDescription="@string/recipes_description">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="🍴  Make something delicious"
+                    android:text="@string/make_something_delicious"
                     android:textColor="@color/forest_green"
                     android:textSize="17sp"
                     android:textStyle="bold" />
@@ -239,12 +255,11 @@
                 android:layout_marginTop="28dp"
                 android:layout_marginBottom="12dp"
                 android:gravity="center"
-                android:text="Smart Pantry · Plan, save and cook"
+                android:text="@string/dashboard_footer"
                 android:textColor="@color/text_secondary"
                 android:textSize="12sp" />
 
         </LinearLayout>
-
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
