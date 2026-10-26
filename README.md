@@ -38,15 +38,15 @@ The database contains tables for ingredients, recipes, recipe ingredients and se
 
 
 5. How to Open and Run the Application
-1. Download or clone this repository to your computer.
-2. Open Android Studio.
-3. Select Open.
-4. Choose the SmartPantryManager project folder.
-5. Allow Android Studio to complete the Gradle synchronisation process.
-6. If Android Studio requests a required SDK component, follow the installation instructions.
-7. Start an Android emulator or connect a compatible Android device.
-8. Select the application run configuration.
-9. Press Run to build and launch the application.
+- Download or clone this repository to your computer.
+- Open Android Studio.
+- Select Open.
+- Choose the SmartPantryManager project folder.
+- Allow Android Studio to complete the Gradle synchronisation process.
+- If Android Studio requests a required SDK component, follow the installation instructions.
+- Start an Android emulator or connect a compatible Android device.
+- Select the application run configuration.
+- Press Run to build and launch the application.
 The project should be opened using the main project folder containing the app folder and project-level Gradle files.
 
 6. Project Structure
