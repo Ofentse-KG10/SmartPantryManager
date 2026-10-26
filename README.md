@@ -1,89 +1,80 @@
-# Smart Pantry Manager
+Smart Pantry Manager
 
-## 1. Project Overview
+1. Project Description
+Smart Pantry Manager is a Java Android application developed for the Mobile App Development 700 practical assignment.
+The purpose of this application is to help users manage the ingredients they have at home and discover recipes they can prepare using the ingredients already available in their pantry. The application aims to help users reduce food waste by making better use of leftover ingredients.
+Users can save ingredients with their names, quantities, units and optional expiry dates. They can view, add, edit and delete pantry items. The application also includes a recipe suggestion feature that checks the ingredients and quantities available in the pantry before recommending a recipe.
 
-Smart Pantry Manager is an Android mobile application developed for the Mobile App Development 700 assignment. The purpose of the application is to help users organise ingredients stored in their pantry and find recipes they can prepare using the ingredients available to them.
+2. Main Features
+- Add ingredients to the pantry.
+- View saved ingredients in a pantry list.
+- Edit existing ingredients.
+- Delete ingredients that are no longer needed.
+- Save ingredient names, quantities, units and optional expiry dates.
+- Store information locally using an SQLite database.
+- Display suggested recipes based on the ingredients available in the pantry.
+- Apply strict recipe matching so that recipes requiring missing ingredients or insufficient quantities are excluded.
+- Display a message when no recipes match the current pantry.
+- View recipe ingredients and preparation instructions.
+- Manage the expiry-soon alert preference through the Settings screen.
+- Display an expiry reminder for ingredients approaching their expiry dates.
 
-The application allows users to manage pantry ingredients, record quantities and units, store expiration dates, and receive recipe suggestions based on ingredient availability.
+3. Technologies Used
+The application was developed using the following technologies:
+- Java for application logic.
+- Android Studio as the development environment.
+- XML for Android screen layouts.
+- SQLite for local data storage.
+- SQLiteOpenHelper for database creation and management.
+- Android Activities and Intents for screen navigation.
+- ListView and a custom BaseAdapter for displaying pantry ingredients.
+- Git and GitHub for version control.
 
-## 2. Main Features
+4. Database Choice
+I chose SQLite because Smart Pantry Manager stores structured information such as ingredients, recipes, recipe ingredients and application settings.
+SQLite stores the information locally on the device. This makes it suitable for an application that does not require a separate online server or cloud database to manage its main features.
+The database helper used in my project is called PantryDatabaseHelper. The database is named smart_pantry.db.
+The database contains tables for ingredients, recipes, recipe ingredients and settings. The database helper manages the creation of these tables and provides methods for working with the saved information. The recipe collection is seeded when the database is first created. 
 
-- **Home Screen:** Displays a welcome message, a summary of saved pantry ingredients, and navigation options.
-- **Add Ingredient:** Allows users to add ingredients by entering the ingredient name, quantity, unit, and optional expiration date.
-- **View My Pantry:** Displays saved ingredients, quantities, units, and available expiration dates.
-- **Edit Ingredients:** Allows users to update the information of existing ingredients.
-- **Delete Ingredients:** Allows users to remove ingredients from their pantry.
-- **Recipe Suggestions:** Displays recipes that can be prepared using the ingredients and quantities available in the pantry.
-- **Strict Recipe Matching:** Checks whether all required ingredients and quantities are available before suggesting a recipe.
-- **Local Database:** Uses SQLite to store pantry ingredients, recipes, recipe requirements, and settings.
 
-## 3. Technologies Used
-
-- Java for Android application development.
-- Android Studio for development and testing.
-- XML for designing the user interface layouts.
-- SQLite for local database storage.
-- Git and GitHub for source-code version control and project hosting.
-
-## 4. Database Design
-
-The application uses a local SQLite database named `smart_pantry.db`.
-
-The database contains four tables:
-
-1. **ingredients:** Stores ingredient IDs, names, quantities, units, and optional expiration dates.
-2. **recipes:** Stores recipe IDs, names, and preparation instructions.
-3. **recipe_ingredients:** Stores the ingredients and quantities required for each recipe.
-4. **settings:** Stores application settings as key-value pairs.
-
-The database helper class, `PantryDatabaseHelper`, creates and manages the database tables. It also supports adding, retrieving, updating, and deleting ingredients, as well as managing recipes and their required ingredients.
-
-## 5. Recipe Matching
-
-The application checks the ingredients available in the pantry against the requirements of each recipe. A recipe is suggested only when every required ingredient is available in a sufficient quantity and the ingredient units match after supported unit normalisation.
-
-If an ingredient is missing or its available quantity is insufficient, the recipe is excluded from the suggestions. This helps users identify recipes they can prepare with their existing pantry ingredients.
-
-## 6. Project Structure
-
-The project contains the following important files and directories:
-
-- `app/src/main/java/` — Contains the Java source files for the application.
-- `app/src/main/res/layout/` — Contains XML layout files for the user interface.
-- `app/src/main/res/values/` — Contains application resources such as strings, colours, and themes.
-- `app/src/main/AndroidManifest.xml` — Contains the Android application configuration.
-- Gradle configuration files — Define the Android project build configuration.
-- `README.md` — Provides an overview of the application and instructions for using the project.
-
-The exact files and package structure may vary depending on the final project configuration.
-
-## 7. How to Run the Application
-
-1. Install Android Studio on a computer.
+5. How to Open and Run the Application
+1. Download or clone this repository to your computer.
 2. Open Android Studio.
-3. Select **Open** and choose the `SmartPantryManager` project folder.
-4. Allow Gradle to synchronise and complete any required project setup.
-5. Start an Android emulator or connect a compatible Android device with USB debugging enabled.
-6. Select the application run configuration.
-7. Click **Run** to build and launch the application.
-8. Use the Home screen to navigate to the ingredient management and recipe suggestion features.
+3. Select Open.
+4. Choose the SmartPantryManager project folder.
+5. Allow Android Studio to complete the Gradle synchronisation process.
+6. If Android Studio requests a required SDK component, follow the installation instructions.
+7. Start an Android emulator or connect a compatible Android device.
+8. Select the application run configuration.
+9. Press Run to build and launch the application.
+The project should be opened using the main project folder containing the app folder and project-level Gradle files.
 
-The SQLite database is created and managed by the application when it runs.
+6. Project Structure
+The Android application source code is stored under the app/src/main directory.
+Important classes in the project include:
+- MainActivity.java: Displays the home dashboard and provides navigation to other screens.
+- PantryDatabaseHelper.java: Manages the SQLite database, tables and database operations.
+- PantryListActivity.java: Displays the ingredients saved in the pantry.
+- AddIngredientActivity.java: Provides the form used to add or edit an ingredient.
+- SuggestedRecipesActivity.java: Displays recipes that match the current pantry.
+- SettingsActivity.java: Provides the application's settings.
 
-## 8. Testing
+7. Testing
+During development, I tested the pantry management functions and the strict recipe-matching behavior.
+The strict-matching tests included:
+1. Checking that a recipe appears when all required ingredients and quantities are available.
+2. Checking that a recipe disappears when a required ingredient is missing.
+3. Checking that a recipe disappears when the available quantity is insufficient.
+The pantry management tests included creating, viewing, updating and deleting ingredients. I also checked that saved pantry information remained available after closing and reopening the application.
 
-The application was tested to check that its main screens and functions operate correctly. Testing covered pantry ingredient management, database storage and retrieval, and recipe suggestions based on available ingredients and quantities.
+8. GitHub Repository
+Repository link:
+https://github.com/Ofentse-KG10/SmartPantryManager 
+The repository is intended to show the source code and development history of Smart Pantry Manager. 
 
-The tests also considered missing ingredients and insufficient quantities to confirm that recipes are not suggested when their requirements are not met.
+9. Student Information
+Student Name: Ofentse Kgopotse 
+Student Number: 402412861
+Module: Mobile App Development 700
 
-## 9. GitHub Repository
 
-The source code for Smart Pantry Manager is available on GitHub:
-
-https://github.com/Ofentse-KG10/SmartPantryManager
-
-The repository provides access to the project source code and its version-control history.
-
-## 10. Conclusion
-
-Smart Pantry Manager provides a simple way for users to organise pantry ingredients and identify suitable recipes. By combining an Android user interface with SQLite database storage and strict recipe matching, the application supports ingredient management and recipe suggestions in one mobile application.
