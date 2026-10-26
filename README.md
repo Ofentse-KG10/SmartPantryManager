@@ -62,9 +62,9 @@ Important classes in the project include:
 7. Testing
 During development, I tested the pantry management functions and the strict recipe-matching behavior.
 The strict-matching tests included:
-1. Checking that a recipe appears when all required ingredients and quantities are available.
-2. Checking that a recipe disappears when a required ingredient is missing.
-3. Checking that a recipe disappears when the available quantity is insufficient.
+-Checking that a recipe appears when all required ingredients and quantities are available.
+-Checking that a recipe disappears when a required ingredient is missing.
+-Checking that a recipe disappears when the available quantity is insufficient.
 The pantry management tests included creating, viewing, updating and deleting ingredients. I also checked that saved pantry information remained available after closing and reopening the application.
 
 8. GitHub Repository
